@@ -13,12 +13,12 @@ export class MapComponent implements OnInit {
   zoom = 12;
   options: google.maps.MapOptions = {
     mapTypeId: 'roadmap',
-    zoomControl: true,
-    scrollwheel: true,
+    zoomControl: false,
+    scrollwheel: false,
     disableDoubleClickZoom: true,
     maxZoom: 15,
     minZoom: 8,
-    backgroundColor: 'white'
+    backgroundColor: 'var(--primary)'
   };
 
   ngOnInit() {

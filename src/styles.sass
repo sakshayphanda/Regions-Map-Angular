@@ -4,16 +4,21 @@
 html
   margin: 0
   padding: 0
+  overflow: hidden
 
 body
   margin: 0
+  overflow: hidden
 
 \:root
-  accent: rgb(0, 204, 189)
-  primary: rgb(30, 46, 74)
+  --accent: rgb(0, 204, 189)
+  --primary: rgb(30, 46, 74)
 
 *
   box-sizing: border-box
 
 .mat-toolbar.mat-primary
   background: var(--primary)
+
+.mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent
+  background: var(--accent)

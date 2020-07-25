@@ -16,6 +16,8 @@ import { MapComponent } from './components/map/map.component';
 import { SideBarComponent } from './containers/side-bar/side-bar.component';
 import { TableComponent } from './components/table/table.component';
 import { DynamicContentComponent } from './containers/dynamic-content/dynamic-content.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { DynamicContentComponent } from './containers/dynamic-content/dynamic-co
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
