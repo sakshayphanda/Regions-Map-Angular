@@ -10,7 +10,7 @@ import { GlobalDataService } from '../../shared/services/global-data.service';
   styleUrls: ['./dashboard.component.sass']
 })
 export class DashboardComponent implements OnInit{
-
+  light = true;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -30,4 +30,7 @@ export class DashboardComponent implements OnInit{
     );
   }
 
+  toggleTheme() {
+    this.light = !this.light;
+  }
 }

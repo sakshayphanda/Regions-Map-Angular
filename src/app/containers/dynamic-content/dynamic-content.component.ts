@@ -3,6 +3,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { BottomSheetsComponent } from 'src/app/components/bottom-sheets/bottom-sheets.component';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
+import { Region } from 'src/app/shared/enums/region.enum';
 
 @Component({
   selector: 'app-dynamic-content',
@@ -26,10 +27,10 @@ export class DynamicContentComponent implements OnInit {
     // this.bottomSheet.open(BottomSheetsComponent);
 
     const dialogRef = this.dialog.open(ModalComponent, {
-      height: '60vh',
+      height: '70vh',
       width: '70vw',
       data: {
-        name: 'sakshay'
+        type: Region.UPDATE
       }
     });
 

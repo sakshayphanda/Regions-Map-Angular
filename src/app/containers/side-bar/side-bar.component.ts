@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { GlobalDataService } from '../../shared/services/global-data.service';
 import { ModalComponent } from '../../components/modal/modal.component';
+import { Region } from 'src/app/shared/enums/region.enum';
 
 @Component({
   selector: 'app-side-bar',
@@ -20,10 +21,10 @@ export class SideBarComponent implements OnInit {
   }
   addRegion(): void {
     const dialogRef = this.dialog.open(ModalComponent, {
-      height: '60vh',
+      height: '70vh',
       width: '70vw',
       data: {
-        type: 'CREATE'
+        type: Region.CREATE
       }
     });
 
