@@ -1,0 +1,8 @@
+<div class="side-menu">
+  <div class="side-menu__title">Regions</div>
+  <mat-nav-list>
+    <ng-container *ngFor="let region of (globalDataService.regions | async)">
+      <a mat-list-item href="#">{{region.name}}</a>
+    </ng-container>
+  </mat-nav-list>
+</div>

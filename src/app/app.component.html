@@ -1,17 +1,1 @@
-<google-map [width]="'100%'" [zoom]="zoom" [options]="options" [center]="center">
-  <map-marker #markerElem *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
-    [title]="marker.title" [options]="marker.options" (mapClick)="openInfo(markerElem)">
-  </map-marker>
-</google-map>
-
-
-<table>
-  <tr>
-    <th>Disabled</th>
-    <th>Name</th>
-    <th>Lattitude</th>
-    <th>Longitude</th>
-  </tr>
-</table>
-
-<button (click)="addMarker()">Add marker</button>
+<app-dashboard></app-dashboard>
