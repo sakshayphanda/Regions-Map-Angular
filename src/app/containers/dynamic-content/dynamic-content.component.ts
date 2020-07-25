@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BottomSheetsComponent } from 'src/app/components/bottom-sheets/bottom-sheets.component';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
 import { Region } from 'src/app/shared/enums/region.enum';
+import { GlobalDataService } from '../../shared/services/global-data.service';
 
 @Component({
   selector: 'app-dynamic-content',
@@ -15,7 +16,8 @@ export class DynamicContentComponent implements OnInit {
   @Input('regions') regions;
   constructor(
     private bottomSheet: MatBottomSheet,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public globalDataService: GlobalDataService
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +37,6 @@ export class DynamicContentComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
     });
 
   }

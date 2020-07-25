@@ -1,5 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { GlobalDataService } from '../../shared/services/global-data.service';
 
 export interface DialogData {
   type: string;
@@ -11,10 +12,11 @@ export interface DialogData {
   styleUrls: ['./modal.component.sass'],
 })
 
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit, OnDestroy {
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private globalData: GlobalDataService
   ) {}
 
   ngOnInit(): void {
@@ -23,5 +25,9 @@ export class ModalComponent implements OnInit {
   }
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  ngOnDestroy() {
+    this.globalData.modalClose.unsubscribe();
   }
 }

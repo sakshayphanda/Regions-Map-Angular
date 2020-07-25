@@ -9,11 +9,11 @@
       <input matInput placeholder="Enter region Name" (change)="newRegion.name = $event.target.value"
         [value]="type !== region.CREATE ? (globalDataService.selectedRegion | async).name: ''">
     </mat-form-field>
-    <div class="table">
+    <div class="table" matSort (matSortChange)="sortData($event)">
       <div class="table__headings">
         <div class="heading">Disabled</div>
-        <div class="heading">City Name</div>
-        <div class="heading colspan2">Longitude/Lattitude</div>
+        <div mat-sort-header="name" class="heading">City Name</div>
+        <div class="heading colspan2">Longitude/Latitude</div>
         <div class="heading">Marker Color</div>
         <div class="half-heading"></div>
       </div>
@@ -22,19 +22,22 @@
 
         <div class="row">
           <div class="column">
-            <mat-checkbox color="accent" (change)="city.disabled = $event.checked"></mat-checkbox>
+            <mat-checkbox color="accent" [checked]="city.disabled" (change)="city.disabled = $event.checked">
+            </mat-checkbox>
           </div>
           <div class="column">
             <mat-form-field>
-              <input (change)="city.name = $event.target.value" matInput placeholder="Name">
+              <input [value]="city.name" (change)="city.name = $event.target.value" matInput placeholder="Name">
             </mat-form-field>
           </div>
           <div class="column colspan2">
             <mat-form-field>
-              <input matInput placeholder="Longitude" (change)="city.longitude = +$event.target.value">
+              <input [value]="city.longitude" matInput placeholder="Longitude"
+                (change)="city.longitude = +$event.target.value">
             </mat-form-field>
             <mat-form-field>
-              <input matInput placeholder="Lattitude" (change)="city.lattitude = +$event.target.value">
+              <input [value]="city.latitude" matInput placeholder="Latitude"
+                (change)="city.latitude = +$event.target.value">
             </mat-form-field>
           </div>
           <div class="column">
@@ -53,29 +56,31 @@
             </button>
           </div>
         </div>
-        <ng-container
-          *ngFor="let city of type !== region.CREATE ? (globalDataService.selectedRegion | async).cities: newRegion.cities">
+        <ng-container *ngFor="let city of newRegion.cities">
           <div class="row">
             <div class="column">
-              <mat-checkbox color="accent" class="example-margin" [checked]="city.disabled"></mat-checkbox>
+              <mat-checkbox (change)="city.disabled = $event.checked" color="accent" class="example-margin"
+                [checked]="city.disabled"></mat-checkbox>
             </div>
             <div class="column">
               <mat-form-field>
-                <input matInput placeholder="Name" [value]="city.name">
+                <input matInput placeholder="Name" (change)="city.name = $event.target.value" [value]="city.name">
               </mat-form-field>
             </div>
             <div class="column colspan2">
               <mat-form-field>
-                <input matInput placeholder="Longitude" [value]="city.longitude">
+                <input matInput placeholder="Longitude" (change)="city.longitude = $event.target.value"
+                  [value]="city.longitude">
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="Lattitude" [value]="city.lattitude">
+                <input matInput placeholder="Latitude" (change)="city.latitude = $event.target.value"
+                  [value]="city.latitude">
               </mat-form-field>
             </div>
             <div class="column">
               <mat-form-field>
                 <mat-label>Color</mat-label>
-                <mat-select [value]="city.color">
+                <mat-select [(ngModel)]="city.color">
                   <mat-option *ngFor="let color of colors" [value]="color.id">
                     {{color.label}}
                   </mat-option>
@@ -84,7 +89,7 @@
             </div>
             <div class="half-column">
               <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
-                <mat-icon style="color: white;">delete</mat-icon>
+                <mat-icon (click)="deleteCity(city)" style="color: white;">delete</mat-icon>
               </button>
             </div>
           </div>
@@ -92,6 +97,7 @@
 
       </div>
     </div>
+    <div class="error">{{errorMsg}}</div>
   </div>
   <div class="regional-table__buttons">
     <button (click)="updateRegions()" mat-raised-button

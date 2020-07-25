@@ -11,14 +11,14 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
 
-      <span>{{(globalDataService.selectedRegion | async).name}}</span>
+      <span>{{(globalDataService.selectedRegion | async).name ? (globalDataService.selectedRegion | async).name : 'No Region Selected'}}</span>
       <button (click)="toggleTheme()" style="margin-left: auto;" mat-mini-fab color="accent">
         <mat-icon style="color: white;">{{light? 'nights_stay': 'wb_sunny'}}</mat-icon>
       </button>
 
     </mat-toolbar>
     <div class="dynamic-content">
-      <app-dynamic-content [regions] = "globalDataService.regions | async"></app-dynamic-content>
+      <app-dynamic-content [regions] = "(globalDataService.regions | async)"></app-dynamic-content>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

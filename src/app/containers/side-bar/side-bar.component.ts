@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { GlobalDataService } from '../../shared/services/global-data.service';
 import { ModalComponent } from '../../components/modal/modal.component';
 import { Region } from 'src/app/shared/enums/region.enum';
+import { ICity } from '../../shared/models/interfaces/ICity';
+import { IRegion } from '../../shared/models/interfaces/IRegion';
 
 @Component({
   selector: 'app-side-bar',
@@ -18,6 +20,12 @@ export class SideBarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.globalDataService.regions.subscribe(
+      r => {
+        localStorage.setItem('regions', JSON.stringify(r));
+
+      }
+    );
   }
   addRegion(): void {
     const dialogRef = this.dialog.open(ModalComponent, {
@@ -31,5 +39,17 @@ export class SideBarComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
     });
+  }
+
+  deleteRegion(name){
+    const index = this.globalDataService.regions.value.findIndex(r => r.name === name);
+    this.globalDataService.regions.value.splice(index, 1);
+    this.globalDataService.regions.next(this.globalDataService.regions.value);
+    if (this.globalDataService.selectedRegion.value.name === name) {
+    this.globalDataService.selectedRegion.next({
+      name: '',
+      cities: []
+    });
+    }
   }
 }

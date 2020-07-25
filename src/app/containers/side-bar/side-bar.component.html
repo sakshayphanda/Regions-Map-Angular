@@ -2,7 +2,13 @@
   <mat-toolbar class="side-menu__title">Regions</mat-toolbar>
   <mat-nav-list class="side-menu__regions-list">
     <ng-container *ngFor="let region of (globalDataService.regions | async)">
-      <div [class.selected]="region.name === (globalDataService.selectedRegion| async).name " matRipple (click)="globalDataService.selectedRegion.next(region)" class="regionName" mat-list-item >{{region.name}}</div>
+      <div style="display: flex;height: 50px;">
+        <div [class.selected]="region.name === (globalDataService.selectedRegion| async).name " matRipple
+          (click)="globalDataService.selectedRegion.next(region)" class="regionName" mat-list-item>{{region.name}}</div>
+        <button (click)="deleteRegion(region.name)" style="margin-left: auto;" mat-mini-fab color="accent">
+          <mat-icon style="color: white;">delete</mat-icon>
+        </button>
+      </div>
     </ng-container>
   </mat-nav-list>
 

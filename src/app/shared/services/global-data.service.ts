@@ -14,7 +14,7 @@ export class GlobalDataService {
           name: 'Delhi',
           disabled: false,
           volume: 'Delhi Volume',
-          lattitude: 28.610001,
+          latitude: 28.610001,
           longitude: 76.8130693,
           color: 'green'
         },
@@ -22,7 +22,7 @@ export class GlobalDataService {
           name: 'Gurgaon',
           disabled: false,
           volume: 'Gurgaon Volume',
-          lattitude: 28.457523,
+          latitude: 28.457523,
           longitude: 77.026344,
           color: 'purple'
         },
@@ -30,39 +30,32 @@ export class GlobalDataService {
           name: 'Noida',
           disabled: false,
           volume: 'Noida Volume',
-          lattitude: 28.535517,
+          latitude: 28.535517,
           longitude: 77.391029,
           color: 'red'
         }
       ]
     },
     {
-      name: 'Kolkata',
+      name: 'West Bengal',
       cities: [
         {
-          name: 'abc',
+          name: 'kolkata',
           disabled: false,
-          volume: 'Delhi volume',
-          lattitude: 28.610001,
-          longitude: 76.8130693
-        }
-      ]
-    },
-    {
-      name: 'Mumbai',
-      cities: [
-        {
-          name: 'Delhi',
-          disabled: false,
-          volume: 'Delhi volume',
-          lattitude: 28.610001,
-          longitude: 76.8130693
+          volume: ' volume',
+          latitude: 22.572645,
+          longitude: 88.363892
         }
       ]
     }
   ];
-  regions = new BehaviorSubject<IRegion[]>(this.dummy);
 
-  selectedRegion = new BehaviorSubject<IRegion>(this.dummy[0]);
+  data: IRegion[] = localStorage.getItem('regions') ? JSON.parse(localStorage.getItem('regions')): [];
+  regions = new BehaviorSubject<IRegion[]>(this.data);
+  modalClose = new BehaviorSubject<boolean>(false);
+  selectedRegion = new BehaviorSubject<IRegion>({
+    name: '',
+    cities: []
+  });
   constructor() { }
 }

@@ -16,8 +16,8 @@ export class MapComponent implements OnInit {
     zoomControl: true,
     scrollwheel: true,
     disableDoubleClickZoom: true,
-    maxZoom: 15,
-    minZoom: 8,
+    maxZoom: 30,
+    minZoom: 5,
     backgroundColor: 'var(--primary)',
   };
   showMap = false;
@@ -26,14 +26,19 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.globalDataService.selectedRegion.subscribe((region) => {
-      console.log('map: ', region);
-
       this.markers = [];
+
+      if (region.cities.length) {
+        this.center = {
+          lat: region.cities[0].latitude,
+          lng: region.cities[0].longitude,
+        };
+      }
       region.cities.forEach((city) => {
         if (!city.disabled) {
           this.markers.push({
             position: {
-              lat: city.lattitude,
+              lat: city.latitude,
               lng: city.longitude,
             },
             label: {
@@ -43,7 +48,9 @@ export class MapComponent implements OnInit {
             title: city.name + `(${region.name})`,
             options: {
               animation: google.maps.Animation.DROP,
-              icon: `http://maps.google.com/mapfiles/ms/icons/${city.color ? city.color : 'blue'}-dot.png`
+              icon: `http://maps.google.com/mapfiles/ms/icons/${
+                city.color ? city.color : 'blue'
+              }-dot.png`,
             },
           });
         }
@@ -51,10 +58,10 @@ export class MapComponent implements OnInit {
     });
 
     navigator.geolocation.getCurrentPosition((position) => {
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
+      // this.center = {
+      //   lat: position.coords.latitude,
+      //   lng: position.coords.longitude,
+      // };
       this.showMap = true;
       console.log(this.center);
     });

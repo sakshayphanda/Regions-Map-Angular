@@ -23,6 +23,12 @@ export class DashboardComponent implements OnInit{
     ) {}
 
   ngOnInit() {
+    if (localStorage.getItem('lightMode')) {
+      this.light = JSON.parse(localStorage.getItem('lightMode'));
+      if(this.light) {
+        this.reverseVariables();
+      }
+    }
     this.globalDataService.regions.subscribe(
       regions => {
         console.log(regions);
@@ -32,5 +38,22 @@ export class DashboardComponent implements OnInit{
 
   toggleTheme() {
     this.light = !this.light;
+    this.reverseVariables();
+  }
+
+  reverseVariables() {
+    const prevPrimary = getComputedStyle(document.documentElement)
+    .getPropertyValue('--primary');
+    const prevAccent = getComputedStyle(document.documentElement)
+    .getPropertyValue('--accent');
+    this.setProperty('--primary', prevAccent);
+    this.setProperty('--accent', prevPrimary);
+
+    localStorage.setItem('lightMode', JSON.stringify(this.light));
+  }
+
+
+  setProperty(variable, value) {
+    document.documentElement.style.setProperty(variable, value);
   }
 }

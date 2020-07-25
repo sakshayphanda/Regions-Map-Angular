@@ -25,6 +25,8 @@ import { ModalComponent } from './components/modal/modal.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSortModule} from '@angular/material/sort';
+
 
 import { FormsModule } from '@angular/forms';
 
@@ -61,7 +63,8 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
