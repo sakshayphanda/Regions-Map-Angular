@@ -38,7 +38,7 @@ export class MapComponent implements OnInit {
           text: 'Marker label ' + (this.markers.length + 1),
         },
         title: 'Marker title ' + (this.markers.length + 1),
-        options: { animation: google.maps.Animation.BOUNCE },
+        options: { animation: google.maps.Animation.DROP },
       })
     });
 

@@ -17,6 +17,11 @@ import { SideBarComponent } from './containers/side-bar/side-bar.component';
 import { TableComponent } from './components/table/table.component';
 import { DynamicContentComponent } from './containers/dynamic-content/dynamic-content.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import { BottomSheetsComponent } from './components/bottom-sheets/bottom-sheets.component';
+import {MatRippleModule} from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 
@@ -27,7 +32,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MapComponent,
     SideBarComponent,
     TableComponent,
-    DynamicContentComponent
+    DynamicContentComponent,
+    BottomSheetsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatBottomSheetModule,
+    MatRippleModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

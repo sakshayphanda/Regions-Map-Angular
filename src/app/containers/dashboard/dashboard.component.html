@@ -10,10 +10,10 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>region</span>
+      <span>{{(globalDataService.selectedRegion | async).name}}</span>
     </mat-toolbar>
     <div class="dynamic-content">
-      <app-dynamic-content></app-dynamic-content>
+      <app-dynamic-content [regions] = "globalDataService.regions | async"></app-dynamic-content>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

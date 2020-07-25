@@ -14,13 +14,6 @@ export class SideBarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.globalDataService.regions.subscribe(
-      regions => {
-        console.log(regions);
-
-        this.regions = regions;
-      }
-    );
   }
 
 }

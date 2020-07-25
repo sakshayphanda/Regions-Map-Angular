@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { BottomSheetsComponent } from 'src/app/components/bottom-sheets/bottom-sheets.component';
 
 @Component({
   selector: 'app-dynamic-content',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DynamicContentComponent implements OnInit {
 
-  constructor() { }
+  @Input('regions') regions;
+  constructor(
+    private bottomSheet: MatBottomSheet
+  ) { }
 
   ngOnInit(): void {
+    console.log(this.regions);
+
+  }
+
+  editRegion() {
+    this.bottomSheet.open(BottomSheetsComponent);
+
   }
 
 }

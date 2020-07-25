@@ -1,8 +1,10 @@
 <div class="side-menu">
   <mat-toolbar class="side-menu__title">Regions</mat-toolbar>
-  <mat-nav-list>
+  <mat-nav-list class="side-menu__regions-list">
     <ng-container *ngFor="let region of (globalDataService.regions | async)">
-      <a mat-list-item href="#">{{region.name}}</a>
+      <div [class.selected]="region.name === (globalDataService.selectedRegion| async).name " matRipple (click)="globalDataService.selectedRegion.next(region)" class="regionName" mat-list-item >{{region.name}}</div>
     </ng-container>
   </mat-nav-list>
+
+  <button class="add" mat-flat-button color="accent">Add Region</button>
 </div>
