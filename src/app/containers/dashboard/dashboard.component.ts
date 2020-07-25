@@ -13,8 +13,8 @@ export class DashboardComponent implements OnInit{
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
-      map(result => result.matches),
-      shareReplay()
+      map(result => result.matches)
+     // shareReplay()
     );
 
   constructor(

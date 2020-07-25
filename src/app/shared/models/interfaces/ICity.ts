@@ -1,7 +1,8 @@
 export interface ICity {
   disabled: boolean;
   name: string;
-  longitude: string;
-  lattitude: string;
+  longitude: number;
+  lattitude: number;
   volume: string;
+  color?: string;
 }

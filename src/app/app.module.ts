@@ -21,6 +21,12 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { BottomSheetsComponent } from './components/bottom-sheets/bottom-sheets.component';
 import {MatRippleModule} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ModalComponent } from './components/modal/modal.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+
+
 
 
 
@@ -33,7 +39,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     SideBarComponent,
     TableComponent,
     DynamicContentComponent,
-    BottomSheetsComponent
+    BottomSheetsComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatTooltipModule,
     MatBottomSheetModule,
     MatRippleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

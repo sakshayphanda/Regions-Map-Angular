@@ -1,19 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css'
 
+
+\:root
+  --accent: rgb(0, 204, 189)
+  --primary: rgb(30, 46, 74)
+
 html
   margin: 0
   padding: 0
   overflow: hidden
   font-size: 15px
+  background: var(--primary)
 
 body
   margin: 0
   overflow: hidden
-
-\:root
-  --accent: rgb(0, 204, 189)
-  --primary: rgb(30, 46, 74)
+  background: var(--primary)
 
 *
   box-sizing: border-box
@@ -32,3 +35,6 @@ body
 
 .mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent
   background: var(--accent)
+
+.mat-form-field-infix
+  width: unset !important

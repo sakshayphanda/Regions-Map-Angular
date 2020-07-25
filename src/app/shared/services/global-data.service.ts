@@ -6,7 +6,7 @@ import { IRegion } from '../models/interfaces/IRegion';
   providedIn: 'root'
 })
 export class GlobalDataService {
-  regions = new BehaviorSubject<IRegion[]>([
+  dummy: IRegion[] = [
     {
       name: 'NCR',
       cities: [
@@ -14,22 +14,25 @@ export class GlobalDataService {
           name: 'Delhi',
           disabled: false,
           volume: 'Delhi Volume',
-          lattitude: '28.610001',
-          longitude: '76.8130693'
+          lattitude: 28.610001,
+          longitude: 76.8130693,
+          color: 'green'
         },
         {
           name: 'Gurgaon',
           disabled: false,
           volume: 'Gurgaon Volume',
-          lattitude: '28.610001',
-          longitude: '76.8130693'
+          lattitude: 28.457523,
+          longitude: 77.026344,
+          color: 'purple'
         },
         {
           name: 'Noida',
           disabled: false,
           volume: 'Noida Volume',
-          lattitude: '28.610001',
-          longitude: '76.8130693'
+          lattitude: 28.535517,
+          longitude: 77.391029,
+          color: 'red'
         }
       ]
     },
@@ -40,8 +43,8 @@ export class GlobalDataService {
           name: 'abc',
           disabled: false,
           volume: 'Delhi volume',
-          lattitude: '28.610001',
-          longitude: '76.8130693'
+          lattitude: 28.610001,
+          longitude: 76.8130693
         }
       ]
     },
@@ -52,38 +55,14 @@ export class GlobalDataService {
           name: 'Delhi',
           disabled: false,
           volume: 'Delhi volume',
-          lattitude: '28.610001',
-          longitude: '76.8130693'
+          lattitude: 28.610001,
+          longitude: 76.8130693
         }
       ]
     }
-  ]);
+  ];
+  regions = new BehaviorSubject<IRegion[]>(this.dummy);
 
-  selectedRegion = new BehaviorSubject<IRegion>(    {
-    name: 'NCR',
-    cities: [
-      {
-        name: 'Delhi',
-        disabled: false,
-        volume: 'Delhi Volume',
-        lattitude: '28.610001',
-        longitude: '76.8130693'
-      },
-      {
-        name: 'Gurgaon',
-        disabled: false,
-        volume: 'Gurgaon Volume',
-        lattitude: '28.610001',
-        longitude: '76.8130693'
-      },
-      {
-        name: 'Noida',
-        disabled: false,
-        volume: 'Noida Volume',
-        lattitude: '28.610001',
-        longitude: '76.8130693'
-      }
-    ]
-  });
+  selectedRegion = new BehaviorSubject<IRegion>(this.dummy[0]);
   constructor() { }
 }

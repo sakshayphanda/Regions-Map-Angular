@@ -1,4 +1,4 @@
-<google-map  [height]="'100%'" [width]="'100%'" [zoom]="zoom" [options]="options" [center]="center">
+<google-map *ngIf="showMap"  [height]="'100%'" [width]="'100%'" [zoom]="zoom" [options]="options" [center]="center">
   <map-marker #markerElem *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
     [title]="marker.title" [options]="marker.options" (mapClick)="openInfo(markerElem)">
   </map-marker>
