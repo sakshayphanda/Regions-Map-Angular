@@ -13,8 +13,8 @@ export class MapComponent implements OnInit {
   zoom = 12;
   options: google.maps.MapOptions = {
     mapTypeId: 'roadmap',
-    zoomControl: false,
-    scrollwheel: false,
+    zoomControl: true,
+    scrollwheel: true,
     disableDoubleClickZoom: true,
     maxZoom: 15,
     minZoom: 8,
