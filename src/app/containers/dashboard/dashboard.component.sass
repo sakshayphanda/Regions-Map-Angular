@@ -3,11 +3,11 @@
 
 .sidenav
   width: 200px
-  background-color: rgb(30, 46, 74)
+  background-color: var(--primary)
 
 
 .sidenav .mat-toolbar
-  background: inherit
+  background: var(--primaryLight)
 
 .mat-toolbar.mat-primary
   position: sticky
@@ -15,10 +15,8 @@
   z-index: 1
 
 .side-bar-content
+  .toolbar
+    background: var(--primary)
 
 .dynamic-content
   height: calc( 100% - 60px )
-
-.rightsidenav
-  width: 200px
-  background-color: rgb(60, 89, 139)

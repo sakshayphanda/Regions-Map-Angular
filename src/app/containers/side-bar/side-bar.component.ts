@@ -23,7 +23,7 @@ export class SideBarComponent implements OnInit {
       height: '60vh',
       width: '70vw',
       data: {
-        type: 'ADD'
+        type: 'CREATE'
       }
     });
 

@@ -1,74 +1,87 @@
-<mat-form-field>
-  <mat-label>Region Name</mat-label>
-  <input matInput placeholder="Enter region Name" [value]="(globalDataService.selectedRegion | async).name">
-</mat-form-field>
-<div class="table">
-  <div class="table__headings">
-    <div class="heading">Disabled</div>
-    <div class="heading">Name</div>
-    <div class="heading colspan2">Longitude/Lattitude</div>
-    <div class="heading">Marker Color</div>
+<div class="regional-table">
+  <div class="table-title">
+    {{type === 'CREATE' ? 'Create': 'Update'}}
   </div>
+  <div class="regional-table__content">
 
-  <div class="table__rows">
-    <ng-container *ngFor="let city of (globalDataService.selectedRegion | async).cities">
-      <div class="row">
-        <div class="column">
-          <mat-checkbox color="accent" class="example-margin" [checked]="city.disabled"></mat-checkbox>
-        </div>
-        <div class="column">
-          <mat-form-field>
-            <input matInput placeholder="Name" [value]="city.name">
-          </mat-form-field>
-        </div>
-        <div class="column colspan2">
-          <mat-form-field>
-            <input matInput placeholder="Longitude" [value]="city.longitude">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Lattitude" [value]="city.lattitude">
-          </mat-form-field>
-        </div>
-        <div class="column">
-          <mat-form-field>
-            <mat-label>Color</mat-label>
-            <mat-select [value]="city.color">
-              <mat-option *ngFor="let color of colors" [value]="color.id">
-                {{color.label}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
+    <mat-form-field>
+      <mat-label>Region Name</mat-label>
+      <input matInput placeholder="Enter region Name"
+        [value]="type !== 'CREATE' ? (globalDataService.selectedRegion | async).name: ''">
+    </mat-form-field>
+    <div class="table">
+      <div class="table__headings">
+        <div class="heading">Disabled</div>
+        <div class="heading">City Name</div>
+        <div class="heading colspan2">Longitude/Lattitude</div>
+        <div class="heading">Marker Color</div>
       </div>
-    </ng-container>
 
-    <div class="row">
-      <div class="column">
-        <mat-checkbox color="accent"></mat-checkbox>
-      </div>
-      <div class="column">
-        <mat-form-field>
-          <input matInput placeholder="Name">
-        </mat-form-field>
-      </div>
-      <div class="column colspan2">
-        <mat-form-field>
-          <input matInput placeholder="Longitude">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Lattitude">
-        </mat-form-field>
-      </div>
-      <div class="column">
-        <mat-form-field>
-          <mat-label>Color</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let color of colors" [value]="color.id">
-              {{color.label}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+      <div class="table__rows">
+
+        <div class="row">
+          <div class="column">
+            <mat-checkbox color="accent"></mat-checkbox>
+          </div>
+          <div class="column">
+            <mat-form-field>
+              <input matInput placeholder="Name">
+            </mat-form-field>
+          </div>
+          <div class="column colspan2">
+            <mat-form-field>
+              <input matInput placeholder="Longitude">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Lattitude">
+            </mat-form-field>
+          </div>
+          <div class="column">
+            <mat-form-field>
+              <mat-label>Color</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let color of colors" [value]="color.id">
+                  {{color.label}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <ng-container *ngFor="let city of (globalDataService.selectedRegion | async).cities">
+          <div class="row" *ngIf="type !== 'CREATE'">
+            <div class="column">
+              <mat-checkbox color="accent" class="example-margin" [checked]="city.disabled"></mat-checkbox>
+            </div>
+            <div class="column">
+              <mat-form-field>
+                <input matInput placeholder="Name" [value]="city.name">
+              </mat-form-field>
+            </div>
+            <div class="column colspan2">
+              <mat-form-field>
+                <input matInput placeholder="Longitude" [value]="city.longitude">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Lattitude" [value]="city.lattitude">
+              </mat-form-field>
+            </div>
+            <div class="column">
+              <mat-form-field>
+                <mat-label>Color</mat-label>
+                <mat-select [value]="city.color">
+                  <mat-option *ngFor="let color of colors" [value]="color.id">
+                    {{color.label}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </ng-container>
+
       </div>
     </div>
+  </div>
+  <div class="regional-table__buttons">
+    <button mat-raised-button color="primary">{{type === 'CREATE' ? 'Create': 'Update'}}</button>
   </div>
 </div>
